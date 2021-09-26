@@ -22,11 +22,11 @@ void Split(char* str, char* sep){
 
     char* tmp = strtok(str, sep);
     while (tmp != NULL){ 
+	// TODO: вывод на экран надо перенести в main. Ф-я не должна выполнять ничего кроме разделения строки на отдельные слова.
         printf("%s\n", tmp);
         tmp = strtok (NULL, sep); 
     }
 }
-
 
 //fferrette
 //ff rr tt 
