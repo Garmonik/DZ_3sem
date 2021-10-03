@@ -6,6 +6,8 @@
 
 void Split(char* str, char* sep, char** result);
 
+// Лучше было бы назвать PrintWords, т.к. ф-ю можно использовать для разных целей, а не только для печать слов после вызова Split
+// Плюс неясно, зачем этой ф-и что-то возвращать
 int print_Split(char **str);
 
 int main(){
