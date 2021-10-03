@@ -22,6 +22,7 @@ int main(int argc, char *argv[]){
 
     str_fd = open(argv[1] ,O_RDONLY);
 
+    // TODO: Вы прочитали из консоли строку и вывели её потом на экран. Зачем? Код должен работать для любого BUF_SIZE, согласны? Задайте его 1 вместо 4096. Работать не будет. 
     while ((read_str = read(str_fd, str, BUF_SIZE)) != 0)
                 write(1, str, read_str);
 
@@ -36,6 +37,7 @@ int main(int argc, char *argv[]){
     close(str_fd);
 }
 
+// TODO: переменная word не используется в ф-и. Точно код хоть на каком-то примере работает?
 void execution_pipe(const char* word){
     unsigned time_out   = 5;
     long start_time = 0,
@@ -48,6 +50,7 @@ void execution_pipe(const char* word){
         write(fd[1], &start_time, 1);
         execlp("word",NULL);
     }
+    // TODO: уверены, что код заходит вот в эту ветку? Едва ли в вашем случае fork хоть когда-нибудь вернет вам 1.
     if (fork() == 1){
         close(fd[1]);
         read(fd[0], &start_time, 1);
@@ -55,6 +58,7 @@ void execution_pipe(const char* word){
         while(now_time - start_time < 5){
             now_time = time(NULL);
         }
+        // TODO: я не понимаю задумку - kill(fork(), 1) будет как-то странно работать
         kill(fork(), 1);
     }
 
