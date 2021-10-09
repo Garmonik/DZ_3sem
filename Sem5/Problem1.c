@@ -32,13 +32,15 @@ int num_client(char* name1, char* name2){
     
     (void)umask;
     
+    pid_t mass_fork = fork();
+    
     mknod(name1, S_IFIFO|0666, 0);
 
-    if(fork() < 0){
+    if(mass_fork < 0){
          printf("Error1!");
          exit(-1);
     }
-    else if(fork() > 0){ 
+    else if(mass_fork > 0){ 
         fd = open(name1, O_WRONLY);
 
         if(fd < 0){
